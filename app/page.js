@@ -9,17 +9,42 @@ const Page = () => {
   });
 
   const toggleDarkMode = () => {
-    setState(prevState => ({ ...prevState, isDarkMode: !prevState.isDarkMode }));
+    setState((prevState) => ({
+      ...prevState,
+      isDarkMode: !prevState.isDarkMode,
+    }));
   };
 
-  const buttons = useMemo(() => [
-    "e", "μ", "sin", "deg", "AC", "C", "/", "*",
-    "7", "8", "9", "-", "4", "5", "6", "+",
-    "1", "2", "3", "=", "0", "."
-  ], []);
+  const buttons = useMemo(
+    () => [
+      "e",
+      "μ",
+      "sin",
+      "deg",
+      "AC",
+      "C",
+      "/",
+      "*",
+      "7",
+      "8",
+      "9",
+      "-",
+      "4",
+      "5",
+      "6",
+      "+",
+      "1",
+      "2",
+      "3",
+      "=",
+      "0",
+      ".",
+    ],
+    []
+  );
 
   const handleClick = (value) => {
-    setState(prevState => {
+    setState((prevState) => {
       let newDisplay = prevState.display;
       let newAnsDisplay = prevState.ansDisplay;
 
@@ -43,7 +68,8 @@ const Page = () => {
           }
           break;
         case "sin":
-          newAnsDisplay = "=" + Math.sin(parseFloat(prevState.display)).toString();
+          newAnsDisplay =
+            "=" + Math.sin(parseFloat(prevState.display)).toString();
           newDisplay = "0";
           break;
         case "e":
@@ -51,11 +77,13 @@ const Page = () => {
           newDisplay = "0";
           break;
         case "μ":
-          newAnsDisplay = "=" + (parseFloat(prevState.display) * 1e-6).toString();
+          newAnsDisplay =
+            "=" + (parseFloat(prevState.display) * 1e-6).toString();
           newDisplay = "0";
           break;
         case "deg":
-          newAnsDisplay = "=" + (parseFloat(prevState.display) * (180 / Math.PI)).toString();
+          newAnsDisplay =
+            "=" + (parseFloat(prevState.display) * (180 / Math.PI)).toString();
           newDisplay = "0";
           break;
         default:
@@ -71,8 +99,16 @@ const Page = () => {
   };
 
   return (
-  <div className={`flex justify-center items-center h-screen ${state.isDarkMode ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}>
-  <div className={`rounded-3xl p-4 w-72 ${state.isDarkMode ? 'bg-gray-900' : 'bg-white/50'}`}>
+    <div
+      className={`flex justify-center items-center h-screen ${
+        state.isDarkMode ? "bg-black text-white" : "bg-gray-400 text-black"
+      }`}
+    >
+      <div
+        className={`rounded-3xl p-4 w-72 ${
+          state.isDarkMode ? "bg-gray-900" : "bg-white/50"
+        }`}
+      >
         <div className="flex flex-col justify-between mb-3">
           <div className="text-blue-500 bg-opacity-20 flex justify-between p-1 rounded">
             <h1 className="font-semibold">Khadim Ali</h1>
@@ -92,8 +128,12 @@ const Page = () => {
               />
             </svg>
           </div>
-          <div className="w-70 flex flex-col justify-end mt-[30px] mb-[30px] border-2 border-[#111827] rounded-xl px-2 py-2">
-            <div className={`text-right text-3xl font-light ${state.isDarkMode ? 'text-white/60  ' : 'text-black/70  '}`}>
+          <div className="w-70 flex flex-col justify-end mt-[30px] mb-[30px] ">
+            <div
+              className={`text-right text-3xl font-light ${
+                state.isDarkMode ? "text-white/60  " : " text-black/70  "
+              }`}
+            >
               {state.display}
             </div>
             <div className="text-4xl text-right font-bold">
